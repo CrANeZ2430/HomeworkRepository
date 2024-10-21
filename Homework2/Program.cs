@@ -37,8 +37,6 @@
                 return "Saturday";
             case 7:
                 return "Sunday";
-            default:
-                return "Incorrect day of week";
         }
     }
 }
