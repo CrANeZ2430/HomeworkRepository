@@ -11,11 +11,13 @@
             if (!byte.TryParse(Console.ReadLine(), out weekDayNum) || 1 > weekDayNum || weekDayNum > 7)
             {
                 Console.WriteLine("Incorect day of week input");
+                Console.WriteLine();
                 continue;
             }
 
             string weekDayText = GetDayOfWeekByNum(weekDayNum);
             Console.WriteLine(weekDayText);
+            Console.WriteLine();
         }
     }
 
@@ -37,6 +39,8 @@
                 return "Saturday";
             case 7:
                 return "Sunday";
+            default:
+                return "Incorrect day of week";
         }
     }
 }
