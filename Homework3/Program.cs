@@ -29,11 +29,11 @@
             }
 
 
-            while (arOperation != "+" && arOperation != "-" && arOperation != "*" && arOperation != "/")
+            while (CheckArithmeticOperations())
             {
                 Console.Write("Enter arithmetic operation: ");
                 arOperation = Console.ReadLine();
-                if (arOperation != "+" && arOperation != "-" && arOperation != "*" && arOperation != "/")
+                if (CheckArithmeticOperations())
                 {
                     Console.WriteLine("Incorect arithmetic operation input");
                     continue; ;
@@ -64,5 +64,15 @@
             default:
                 return 0;
         }
+    }
+
+    private static bool CheckArithmeticOperations()
+    {
+        if (arOperation != "+" && arOperation != "-" && arOperation != "*" && arOperation != "/")
+        {
+            return true;
+        }
+
+        return false;
     }
 }
