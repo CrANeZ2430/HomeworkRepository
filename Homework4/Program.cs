@@ -34,7 +34,7 @@
             }
             catch
             {
-                Console.WriteLine("You cannot divide by zero. Reenter your number\n");
+                Console.WriteLine("You cannot divide by zero. Reenter your numbers\n");
             }
         }
     }
