@@ -15,14 +15,12 @@
             {
                 Console.WriteLine("Enter valid number");
                 Console.Write("Enter your first number: ");
-                continue;
             }
             Console.Write("Enter your second number: ");
             while (!decimal.TryParse(Console.ReadLine(), out secondNum))
             {
                 Console.WriteLine("Enter valid number");
                 Console.Write("Enter your second number: ");
-                continue;
             }
 
             Console.Write("\nThe result is: ");
