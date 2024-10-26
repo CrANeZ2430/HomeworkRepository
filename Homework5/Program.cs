@@ -15,7 +15,7 @@
             }
             catch
             {
-                Console.WriteLine("Invalid age numder. Reenter user age\n");
+                Console.WriteLine("Invalid age number. Reenter user age\n");
             }
         }
 
