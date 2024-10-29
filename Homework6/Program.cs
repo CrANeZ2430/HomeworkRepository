@@ -42,38 +42,65 @@
 
     private static void FirstPoint()
     {
-        //implementation
+        byte workerAm;
+        decimal nWorkerSalary;
+        decimal totalSalarySum = 0;
+        
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("\nFirst point");
+        Console.ResetColor();
+        
+        Console.Write("Enter amount of workers: ");
+        while (!byte.TryParse(Console.ReadLine(), out workerAm) || workerAm <= 0)
+        {
+            Console.WriteLine("Invalid amount of workers");
+            Console.Write("Enter amount of worker: ");
+        }
+
+        for (int i = 1; i <= workerAm; i++)
+        {
+            Console.Write($"Enter {i}. worker's salary: ");
+            while (!decimal.TryParse(Console.ReadLine(), out nWorkerSalary) || nWorkerSalary <= 0)
+            {
+                Console.WriteLine("Invalid salary");
+                Console.Write($"Enter {i}. worker's salary: ");
+            }
+            totalSalarySum += nWorkerSalary;
+        }
+        
+        Console.WriteLine($"Average salary: {totalSalarySum / workerAm}");
     }
 
     private static void SecondPoint()
     {
-        int userRowsAm;
-        int userColumnsAm;
+        int userRowsNum;
+        int userColumnsNum;
         
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("\nSecond point");
         Console.ResetColor();
         
         Console.Write("Enter amount of rows: ");
-        while (!int.TryParse(Console.ReadLine(), out userRowsAm) || userRowsAm <= 0)
+        while (!int.TryParse(Console.ReadLine(), out userRowsNum) || userRowsNum <= 0)
         {
             Console.WriteLine("Please enter a valid number");
             Console.Write("Enter number: ");
         }
-        userColumnsAm = userRowsAm;
+        userColumnsNum = userRowsNum;
 
         Console.Write("Your graph is: ");
-        for (int i = 1; i <= userRowsAm; i++)
+        Console.WriteLine();
+        for (int rowsNum = 1; rowsNum <= userRowsNum; rowsNum++)
         {
-            for (int j = 1; j <= userColumnsAm; j++)
+            for (int columnsNum = 1; columnsNum <= userColumnsNum; columnsNum++)
             {
-                if (j >= userColumnsAm + 1 - i)
+                if (columnsNum > userColumnsNum - rowsNum)
                 {
                     Console.Write("*");
                 }
                 else
                 {
-                    Console.Write(".");
+                    Console.Write(" ");
                 }
             }
             Console.WriteLine();
@@ -125,7 +152,31 @@
 
     private static void FourthPoint()
     {
-        //implementation
+        string password;
+        
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("\nFourth point");
+        Console.ResetColor();
+        
+        Console.WriteLine("Your password must contain at least 8 characters, at least 1 digit and ! @ #");
+        Console.Write("Enter your password: ");
+        password = Console.ReadLine()!;
+        while ((!password.Contains("0") && !password.Contains("1") && !password.Contains("2") && 
+               !password.Contains("3") && !password.Contains("4") && !password.Contains("5") && 
+               !password.Contains("6") && !password.Contains("7") && !password.Contains("8") && 
+               !password.Contains("9")) || !password.Contains("!") || !password.Contains("@") || 
+               !password.Contains("#") || password.Length < 8)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Invalid password");
+            Console.ResetColor();
+            Console.Write("Enter your password: ");
+            password = Console.ReadLine()!;
+        }
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("Your password is correct");
+        Console.ResetColor();
     }
 
     private static void FifthPoint()
@@ -164,7 +215,28 @@
 
     private static void SixthPoint()
     {
-        //implementation
+        decimal workHoursAm;
+        decimal salaryPerHour;
+        
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("\nSixth point");
+        Console.ResetColor();
+        
+        Console.Write("Enter amount of work hours: ");
+        while (!decimal.TryParse(Console.ReadLine(), out workHoursAm) || workHoursAm <= 0 || workHoursAm > 16)
+        {
+            Console.WriteLine("Invalid amount of work hours");
+            Console.Write("Enter amount of work hours: ");
+        }
+        
+        Console.Write("Enter salary per hour: ");
+        while (!decimal.TryParse(Console.ReadLine(), out salaryPerHour)  || workHoursAm <= 0)
+        {
+            Console.WriteLine("Invalid salary per hour");
+            Console.Write("Enter salary per hour: ");
+        }
+        
+        Console.WriteLine($"Your day salary: {workHoursAm * salaryPerHour}");
     }
 
     private static void SeventhPoint()
