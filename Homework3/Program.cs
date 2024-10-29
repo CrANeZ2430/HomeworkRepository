@@ -17,7 +17,6 @@
             {
                 Console.WriteLine("Incorrect first number input");
                 Console.Write("Enter first number: ");
-                continue;
             }
 
             Console.Write("Enter second number: ");
@@ -25,7 +24,6 @@
             {
                 Console.WriteLine("Incorrect second number input");
                 Console.Write("Enter second number: ");
-                continue;
             }
 
 
@@ -36,7 +34,6 @@
                 if (CheckArithmeticOperations())
                 {
                     Console.WriteLine("Incorect arithmetic operation input");
-                    continue; ;
                 }
             }
 
