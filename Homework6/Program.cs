@@ -182,8 +182,8 @@
     private static void FifthPoint()
     {
         int userNumb;
-        int preLastNum;
-        int lastNum;
+        long preLastNum;
+        long lastNum;
         
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("\nFifth point");
@@ -205,7 +205,7 @@
             lastNum = 1;
             for (int sequenceNum = 3; sequenceNum <= userNumb; sequenceNum++)
             {
-                int newNum = lastNum + preLastNum;
+                long newNum = lastNum + preLastNum;
                 Console.Write($", {newNum}");
                 preLastNum = lastNum;
                 lastNum = newNum;
