@@ -122,6 +122,6 @@ bool CheckForWinner()
         Console.WriteLine("\nDraw!");
         return true;
     }
-    
+
     return false;
 }
