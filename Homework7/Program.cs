@@ -26,6 +26,7 @@ void SetPlayerChoiceOnField(string playerChoice)
     {
         Console.Write("\n2. player choice: ");
         string playerChoiceOnField = Console.ReadLine()!;
+        Console.WriteLine();
         if (int.TryParse(playerChoiceOnField, out int number) && number > 0 && number < 10 && field[int.Parse(playerChoiceOnField) - 1] == playerChoiceOnField)
         {
             field[number - 1] = playerChoice;
