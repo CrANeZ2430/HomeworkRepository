@@ -181,7 +181,7 @@
 
     private static void FifthPoint()
     {
-        int userNumb;
+        int userNum;
         long preLastNum;
         long lastNum;
         
@@ -190,7 +190,7 @@
         Console.ResetColor();
         
         Console.Write("Enter number: ");
-        while (!int.TryParse(Console.ReadLine(), out userNumb) || userNumb <= 0)
+        while (!int.TryParse(Console.ReadLine(), out userNum) || userNum <= 0)
         {
             Console.WriteLine("Please enter a valid number");
             Console.Write("Enter number: ");
@@ -199,11 +199,11 @@
         Console.WriteLine("Your Fibonacci's sequence: ");
         Console.Write("0, 1");
             
-        if (userNumb != 1)
+        if (userNum != 1)
         {
             preLastNum = 0;
             lastNum = 1;
-            for (int sequenceNum = 3; sequenceNum <= userNumb; sequenceNum++)
+            for (int sequenceNum = 3; sequenceNum <= userNum; sequenceNum++)
             {
                 long newNum = lastNum + preLastNum;
                 Console.Write($", {newNum}");
@@ -241,14 +241,14 @@
 
     private static void SeventhPoint()
     {
-        int userNumb;
+        int userNum;
 
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("\nSeventh point");
         Console.ResetColor();
         
         Console.Write("Enter number: ");
-        while (!int.TryParse(Console.ReadLine(), out userNumb) || userNumb <= 0)
+        while (!int.TryParse(Console.ReadLine(), out userNum) || userNum <= 0)
         {
             Console.WriteLine("Please enter a valid number");
             Console.Write("Enter number: ");
@@ -257,7 +257,7 @@
         Console.WriteLine("Your multiplication table: ");
         for (int i = 1; i <= 10; i++)
         {
-            Console.WriteLine($"{userNumb}x{i} = {userNumb * i}");
+            Console.WriteLine($"{userNum}x{i} = {userNum * i}");
         }
     }
 
