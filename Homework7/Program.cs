@@ -1,41 +1,18 @@
 ﻿string[] field = { "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-bool isGameOver;
 
 BuildField();
 
 while (true)
 {
-    while (true)
-    {
-        Console.Write("\n1. player choice: ");
-        string player1Choice = Console.ReadLine()!;
-        if (int.TryParse(player1Choice, out int number) && number > 0 && number < 10 && field[int.Parse(player1Choice) - 1] == player1Choice)
-        {
-            field[number - 1] = "X";
-            BuildField();
-            break;
-        }
-    }
-    
-    isGameOver = CheckForWinner();
+    SetPlayerChoiceOnField("X");
+    bool isGameOver = CheckForWinnerAndDraw();
     if (isGameOver)
     {
         break;
     }
     
-    while (true)
-    {
-        Console.Write("\n2. player choice: ");
-        string player2Choice = Console.ReadLine()!;
-        if (int.TryParse(player2Choice, out int number) && number > 0 && number < 10 && field[int.Parse(player2Choice) - 1] == player2Choice)
-        {
-            field[number - 1] = "O";
-            BuildField();
-            break;
-        }
-    }
-    
-    isGameOver = CheckForWinner();
+    SetPlayerChoiceOnField("O");
+    isGameOver = CheckForWinnerAndDraw();
     if (isGameOver)
     {
         break;
@@ -43,6 +20,21 @@ while (true)
 }
 
 //General methods
+void SetPlayerChoiceOnField(string playerChoice)
+{
+    while (true)
+    {
+        Console.Write("\n2. player choice: ");
+        string playerChoiceOnField = Console.ReadLine()!;
+        if (int.TryParse(playerChoiceOnField, out int number) && number > 0 && number < 10 && field[int.Parse(playerChoiceOnField) - 1] == playerChoiceOnField)
+        {
+            field[number - 1] = playerChoice;
+            BuildField();
+            break;
+        }
+    }
+}
+
 void BuildField()
 {
     for (int i = 0; i < field.Length; i++)
@@ -60,7 +52,7 @@ void BuildField()
     }
 }
 
-bool CheckForWinner()
+bool CheckForWinnerAndDraw()
 {
     for (int i = 0; i < 3; i++)
     {
