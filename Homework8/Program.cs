@@ -41,7 +41,7 @@ void FirstAndSecondHomework()
     Random random = new Random();
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = random.Next(-10, 10);
+        array[i] = random.Next(-10, 11);
     }
 
     Console.WriteLine("Array members with even index:");
@@ -98,6 +98,43 @@ void FourthHomework()
     Console.WriteLine("\n4 homework");
     Console.ResetColor();
     
+    int[,] matrix = new int[5,5];
+    int [] biggestNumberCoordinates = new int[2];
+    int [] smallestNumberCoordinates = new int[2];
+    int biggestMatrixNumber = 0;
+    int smallestMatrixNumber = 0;
+    Random random = new Random();
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            matrix[i, j] = random.Next(-10, 11);
+        }
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            if (matrix[i, j] > biggestMatrixNumber)
+            {
+                biggestMatrixNumber = matrix[i, j];
+                biggestNumberCoordinates[0] = i;
+                biggestNumberCoordinates[1] = j;
+            }
+            else if (matrix[i, j] < smallestMatrixNumber)
+            {
+                smallestMatrixNumber = matrix[i, j];
+                smallestNumberCoordinates[0] = i;
+                smallestNumberCoordinates[1] = j;
+            }
+        }
+    }
+    
+    Console.WriteLine($"Biggest number in matrix is {biggestMatrixNumber} " +
+                      $"on coordinates {biggestNumberCoordinates[0]}, {biggestNumberCoordinates[1]}");
+    Console.WriteLine($"Biggest number in matrix is {smallestMatrixNumber} " +
+                      $"on coordinates {smallestNumberCoordinates[0]}, {smallestNumberCoordinates[1]}");
 }
 
 void FifthHomework()
@@ -105,13 +142,32 @@ void FifthHomework()
     Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine("\n5 homework");
     Console.ResetColor();
+
+    int daysInterval;
     
-    Console.WriteLine(DayOfWeek.Monday);
+    while (true)
+    {
+        Console.Write("Enter number of days: ");
+        if (int.TryParse(Console.ReadLine(), out daysInterval) && daysInterval >= 0)
+        {
+            break;
+        }
+    }
+    
+    int dayNumber = daysInterval % 7;
+    if (daysInterval == 1)
+    {
+        Console.WriteLine($"Today is Monday and in 1 day will be {(DayOfWeek)dayNumber}.");
+    }
+    else
+    {
+        Console.WriteLine($"Today is Monday and in {daysInterval} days will be {(DayOfWeek)dayNumber}.");
+    }
 }
 
 enum DayOfWeek
 {
-    Monday = 1,
+    Monday,
     Tuesday,
     Wednesday,
     Thursday,
