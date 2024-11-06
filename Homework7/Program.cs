@@ -4,14 +4,14 @@ BuildField();
 
 while (true)
 {
-    SetPlayerChoiceOnField("X");
+    SetPlayerChoiceOnField("X", 1);
     bool isGameOver = CheckForWinnerAndDraw();
     if (isGameOver)
     {
         break;
     }
     
-    SetPlayerChoiceOnField("O");
+    SetPlayerChoiceOnField("O", 2);
     isGameOver = CheckForWinnerAndDraw();
     if (isGameOver)
     {
@@ -20,11 +20,11 @@ while (true)
 }
 
 //General methods
-void SetPlayerChoiceOnField(string playerChoice)
+void SetPlayerChoiceOnField(string playerChoice, byte playerNumber)
 {
     while (true)
     {
-        Console.Write("\n2. player choice: ");
+        Console.Write($"\n{playerNumber}. player choice: ");
         string playerChoiceOnField = Console.ReadLine()!;
         Console.WriteLine();
         if (int.TryParse(playerChoiceOnField, out int number) && number > 0 && number < 10 && field[int.Parse(playerChoiceOnField) - 1] == playerChoiceOnField)

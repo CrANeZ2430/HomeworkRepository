@@ -106,4 +106,16 @@ void FifthHomework()
     Console.WriteLine("\n5 homework");
     Console.ResetColor();
     
+    Console.WriteLine(DayOfWeek.Monday);
+}
+
+enum DayOfWeek
+{
+    Monday = 1,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
 }
