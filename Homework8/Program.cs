@@ -75,16 +75,17 @@ void ThirdHomework()
     Console.WriteLine("\n3 homework");
     Console.ResetColor();
     
-    int[,] matrix = new int[9,9];
+    const int maxNumber = 9;
+    int[,] matrix = new int[maxNumber,maxNumber];
     
     Console.WriteLine("Your multiplication table:");
-    for (int i = 1; i <= 9; i++)
+    for (int i = 1; i <= maxNumber; i++)
     {
-        for (int j = 1; j <= 9; j++)
+        for (int j = 1; j <= maxNumber; j++)
         {
             matrix[i - 1, j - 1] = i * j;
             Console.Write($"{matrix[i - 1, j - 1]} ");
-            if (j == 9)
+            if (j == maxNumber)
             {
                 Console.WriteLine();
             }

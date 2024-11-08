@@ -60,8 +60,6 @@
             case ("keyboard"):
                 productPrice = 5.50m;
                 break;
-            default:
-                break;
         }
     }
 }
