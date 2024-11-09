@@ -195,7 +195,7 @@ void FourthHomework()
                 Console.WriteLine();
             }
             
-            if (i == j)
+            if (i == j || i + j == matrix.GetLength(0) - 1)
             {
                 sum += matrix[i, j];
             }
