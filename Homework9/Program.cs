@@ -172,7 +172,7 @@ void FourthHomework()
     Console.WriteLine("\nFourth homework");
     Console.ResetColor();
     
-    int[,] matrix = new int [3,3];
+    int[,] matrix = new int [4,4];
     int sum = 0;
     Random random = Random.Shared;
 
@@ -183,7 +183,7 @@ void FourthHomework()
             matrix[i, j] = random.Next(100);
         }
     }
-
+    
     Console.WriteLine("\nYour matrix:");
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -195,7 +195,7 @@ void FourthHomework()
                 Console.WriteLine();
             }
             
-            if (i == j)
+            if (i == j || i + j == matrix.GetLength(0) - 1)
             {
                 sum += matrix[i, j];
             }
