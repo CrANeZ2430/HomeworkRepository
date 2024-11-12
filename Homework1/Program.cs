@@ -1,6 +1,5 @@
 ﻿public class OrderForming
 {
-
     private static byte orderNum = 1;
     private static decimal productPrice = 0;
     private static string productName;
