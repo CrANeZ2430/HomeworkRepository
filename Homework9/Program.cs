@@ -37,12 +37,13 @@ void FirstHomework()
     {
         array[i] = random.Next(100);
     }
-    
+
     Console.WriteLine("\nYour array:");
     for (int i = 0; i < array.Length; i++)
     {
         Console.Write(array[i] + " ");
     }
+
     Console.WriteLine();
 
     for (int i = 0; i < array.Length; i++)
@@ -52,6 +53,7 @@ void FirstHomework()
             arrayLargestNumber = array[i];
         }
     }
+
     for (int i = 0; i < array.Length; i++)
     {
         if (array[i] > arraySecondLargestNumber && array[i] < arrayLargestNumber)
@@ -59,6 +61,7 @@ void FirstHomework()
             arraySecondLargestNumber = array[i];
         }
     }
+
     Console.WriteLine($"\nThe second largest number in the array: {arraySecondLargestNumber}");
 }
 
@@ -67,8 +70,8 @@ void SecondHomework()
     Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine("\nSecond homework");
     Console.ResetColor();
-    
-    int[,] matrix = new int[2,3];
+
+    int[,] matrix = new int[2, 3];
     Random random = Random.Shared;
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -77,7 +80,7 @@ void SecondHomework()
             matrix[i, j] = random.Next(100);
         }
     }
-    
+
     Console.WriteLine("\nYour matrix:");
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -90,23 +93,23 @@ void SecondHomework()
             }
         }
     }
-    
+
     for (int k = 0; k < matrix.GetLength(0); k++)
     {
         for (int i = 0; i < matrix.GetLength(1); i++)
         {
             for (int j = 0; j < matrix.GetLength(1) - 1; j++)
             {
-                if (matrix[k,j] > matrix[k,j + 1])
+                if (matrix[k, j] > matrix[k, j + 1])
                 {
-                    int temp = matrix[k,j]; 
-                    matrix[k,j] = matrix[k,j + 1];
-                    matrix[k,j + 1] = temp;
+                    int temp = matrix[k, j];
+                    matrix[k, j] = matrix[k, j + 1];
+                    matrix[k, j + 1] = temp;
                 }
             }
         }
     }
-    
+
     Console.WriteLine("\nYour sorted matrix:");
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -126,7 +129,7 @@ void ThirdHomework()
     Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine("\nThird homework");
     Console.ResetColor();
-    
+
     int[] array = new int[10];
     byte arrayItemIndex;
     Random random = Random.Shared;
@@ -140,8 +143,9 @@ void ThirdHomework()
     {
         Console.Write(array[i] + " ");
     }
+
     Console.WriteLine();
-    
+
     while (true)
     {
         Console.ForegroundColor = ConsoleColor.Green;
@@ -157,6 +161,7 @@ void ThirdHomework()
     {
         array[i] = array[i + 1];
     }
+
     array[array.Length - 1] = 0;
 
     Console.WriteLine("\nYour reworked array:");
@@ -171,8 +176,8 @@ void FourthHomework()
     Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine("\nFourth homework");
     Console.ResetColor();
-    
-    int[,] matrix = new int [4,4];
+
+    int[,] matrix = new int [4, 4];
     int sum = 0;
 
     for (int i = 0; i < matrix.GetLength(0); i++)
@@ -182,7 +187,7 @@ void FourthHomework()
             matrix[i, j] = Random.Shared.Next(100);
         }
     }
-    
+
     Console.WriteLine("\nYour matrix:");
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -193,13 +198,13 @@ void FourthHomework()
             {
                 Console.WriteLine();
             }
-            
+
             if (i == j || i + j == matrix.GetLength(0) - 1)
             {
                 sum += matrix[i, j];
             }
         }
     }
-    
+
     Console.WriteLine($"\nThe sum of diagonal elements: {sum}");
 }
