@@ -174,13 +174,12 @@ void FourthHomework()
     
     int[,] matrix = new int [4,4];
     int sum = 0;
-    Random random = Random.Shared;
 
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = random.Next(100);
+            matrix[i, j] = Random.Shared.Next(100);
         }
     }
     
