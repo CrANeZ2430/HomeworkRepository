@@ -15,7 +15,7 @@ while (true)
 }
 
 string[] processedUserInput = userInput.Split(',').Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
-Console.WriteLine("Your words:");
+Console.WriteLine("\nYour words:");
 for (int i = 0; i < processedUserInput.Length; i++)
 {
     Console.Write(processedUserInput[i].Trim());

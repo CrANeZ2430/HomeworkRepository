@@ -15,7 +15,7 @@ while (true)
 }
 
 string[] trimmedInput = initials.Split().Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
-Console.WriteLine($"Your initials: {trimmedInput[0]} {trimmedInput[1]}");
+Console.WriteLine($"\nYour initials: {trimmedInput[0]} {trimmedInput[1]}");
 
 if (trimmedInput[0][0] == trimmedInput[1][0])
 {
