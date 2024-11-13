@@ -5,7 +5,7 @@ while (true)
     Console.ForegroundColor = ConsoleColor.Blue;
     Console.Write("Enter your name: ");
     initials = Console.ReadLine();
-
+    
     if (initials.Length != 0 && initials.Contains(' '))
     {
         Console.ResetColor();
