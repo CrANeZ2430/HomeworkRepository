@@ -21,7 +21,9 @@ public static class AdditionalMath
     {
         if (number < 0)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("The number cannot be negative");
+            Console.ResetColor();
             return -1;
         }
         if (number == 1)
