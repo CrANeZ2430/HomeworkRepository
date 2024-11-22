@@ -1,4 +1,15 @@
-﻿AdditionalMath.CalculateFibonacciNumber(110);
+﻿int fibonacciNumberOrder;
+
+while (true)
+{
+    Console.Write("Enter Fibonacci number: ");
+    string input = Console.ReadLine()!;
+    if (int.TryParse(input, out fibonacciNumberOrder) && fibonacciNumberOrder > 0)
+    {
+        AdditionalMath.CalculateFibonacciNumber(fibonacciNumberOrder);
+        break;
+    }
+}
 
 static class AdditionalMath
 {
@@ -12,7 +23,6 @@ static class AdditionalMath
             Console.WriteLine("Fibonacci number: 0");
             return;
         }
-
         if (number == 2)
         {
             Console.WriteLine("Fibonacci number: 1");
