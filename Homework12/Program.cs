@@ -17,20 +17,20 @@ public static class AdditionalMath
     private static long nextNumber = 1;
     private const int ExceptedVars = 2;
     
-    public static long CalculateFibonacciNumber(int number)
+    public static long CalculateFibonacciNumber(int orderNumber)
     {
-        if (number < 0)
+        if (orderNumber < 0)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("The number cannot be negative");
             Console.ResetColor();
             return -1;
         }
-        if (number == 1)
+        if (orderNumber == 1)
         {
             return 0;
         }
-        if (number == 2)
+        if (orderNumber == 2)
         {
             return 1;
         }
@@ -38,9 +38,9 @@ public static class AdditionalMath
         long previousNumber = currentNumber;
         currentNumber = nextNumber;
         nextNumber = previousNumber + nextNumber;
-        if (number - ExceptedVars != 0)
+        if (orderNumber - ExceptedVars != 0)
         {
-            CalculateFibonacciNumber(number - 1);
+            CalculateFibonacciNumber(orderNumber - 1);
         }
         return nextNumber;
     }
