@@ -14,7 +14,6 @@ public class UnitTest1
         long fibonacciNumber = AdditionalMath.CalculateFibonacciNumber(orderNumber);
 
         //Act
-
         Assert.True(fibonacciNumber == expectedResult);
     }
     
