@@ -10,7 +10,6 @@ public class UnitTest1
         const long expectedResult = 55;
         
         //Arrange
-
         long fibonacciNumber = AdditionalMath.CalculateFibonacciNumber(orderNumber);
 
         //Act
