@@ -108,3 +108,5 @@ void DisplayTasks()
         }
     }
 }
+
+//Add ability to mark ended tasks
