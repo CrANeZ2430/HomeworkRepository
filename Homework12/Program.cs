@@ -22,7 +22,7 @@ public static class AdditionalMath
         if (orderNumber < 0)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("The number cannot be negative");
+            Console.WriteLine("The number cannot be negative or zero");
             Console.ResetColor();
             return -1;
         }
