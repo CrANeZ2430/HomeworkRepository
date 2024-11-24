@@ -5,51 +5,51 @@ public class UnitTest1
     [Fact]
     public void CalculateFibonacciNumber_CheckCommonValue()
     {
-        // Assert
+        // Arrange
         const int orderNumber = 11;
         const long expectedResult = 55;
         
-        //Arrange
+        //Act
         long fibonacciNumber = AdditionalMath.CalculateFibonacciNumber(orderNumber);
 
-        //Act
+        //Assert
         Assert.True(fibonacciNumber == expectedResult);
     }
     
     [Fact]
     public void CalculateFibonacciNumber_CheckNegativeValue()
     {
-        // Assert
+        // Arrange
         const int orderNumber = -10;
         const long expectedResult = -1;
         
-        //Arrange
+        //Act
         long fibonacciNumber = AdditionalMath.CalculateFibonacciNumber(orderNumber);
 
-        //Act
+        //Assert
         Assert.True(fibonacciNumber == expectedResult);
     }
     
     [Fact]
     public void CalculateFibonacciNumber_CheckSpecialValues()
     {
-        // Assert
+        // Arrange
         const int orderNumber1 = 1;
         const long expectedResult1 = 0;
         
         const int orderNumber2 = 2;
         const long expectedResult2 = 1;
         
-        //Arrange
+        //Act
         long fibonacciNumber = AdditionalMath.CalculateFibonacciNumber(orderNumber1);
 
-        //Act
+        //Assert
         Assert.True(fibonacciNumber == expectedResult1);
         
-        //Arrange
+        //Act
         fibonacciNumber = AdditionalMath.CalculateFibonacciNumber(orderNumber2);
 
-        //Act
+        //Assert
         Assert.True(fibonacciNumber == expectedResult2);
     }
 }
