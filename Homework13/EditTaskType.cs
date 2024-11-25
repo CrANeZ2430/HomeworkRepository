@@ -1,8 +1,9 @@
 ﻿namespace Homework13;
 
-internal enum TaskType
+internal enum EditTaskType
 {
     Add = 1,
+    SetAsDone,
     Remove,
     Modify,
     Display

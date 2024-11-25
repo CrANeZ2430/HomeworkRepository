@@ -1,9 +1,9 @@
 ﻿using Homework13;
 
-List<string> tasksList = new List<string>();
+List<UserTask> tasksList = new List<UserTask>();
 
 Console.ForegroundColor = ConsoleColor.Green;
-Console.WriteLine("1 - Add task\n2 - Remove task\n3 - Modify task\n4 - Display task");
+Console.WriteLine("1 - Add task\n2 - Set as done\n3 - Remove task\n4 - Modify task\n5 - Display task");
 while (true)
 {
     SelectAction();
@@ -11,33 +11,36 @@ while (true)
 
 void SelectAction()
 {
-    TaskType taskType;
+    EditTaskType editTaskType;
     
     while (true)
     {
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("\nEnter action number: ");
         string input = Console.ReadLine()!;
-        if (int.TryParse(input, out int actionNumber) && actionNumber > 0 && actionNumber <= 4)
+        if (int.TryParse(input, out int actionNumber) && actionNumber > 0 && actionNumber <= 5)
         {
-            taskType = (TaskType)actionNumber;
+            editTaskType = (EditTaskType)actionNumber;
             Console.ResetColor();
             break;
         }
     }
 
-    switch (taskType)
+    switch (editTaskType)
     {
-        case TaskType.Add:
+        case EditTaskType.Add:
             AddTask();
             break;
-        case TaskType.Remove:
-            EditTask(TaskType.Remove);
+        case EditTaskType.SetAsDone:
+            EditTask(EditTaskType.SetAsDone);
             break;
-        case TaskType.Modify:
-            EditTask(TaskType.Modify);
+        case EditTaskType.Remove:
+            EditTask(EditTaskType.Remove);
             break;
-        case TaskType.Display:
+        case EditTaskType.Modify:
+            EditTask(EditTaskType.Modify);
+            break;
+        case EditTaskType.Display:
             DisplayTasks();
             break;
     }
@@ -52,15 +55,23 @@ void AddTask()
         string input = Console.ReadLine()!;
         if (input != "")
         {
-            tasksList.Add(input.Trim());
+            tasksList.Add(new UserTask(input.Trim()));
             Console.ResetColor();
             break;
         }
     }
 }
 
-void EditTask(TaskType editTaskType)
+void EditTask(EditTaskType editTaskType)
 {
+    if (tasksList.Count == 0)
+    {
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("You don't have any tasks to edit");
+        Console.ResetColor();
+        return;
+    }
+    
     int taskIndex;
     
     while (true)
@@ -76,36 +87,68 @@ void EditTask(TaskType editTaskType)
     
     switch (editTaskType)
     {
-        case TaskType.Remove:
-            tasksList.RemoveAt(taskIndex - 1);
-            Console.ResetColor();
+        case EditTaskType.SetAsDone:
+            tasksList[taskIndex - 1].SetTaskAsDone();
             break;
-        case TaskType.Modify:
+        case EditTaskType.Remove:
+            tasksList.RemoveAt(taskIndex - 1);
+            break;
+        case EditTaskType.Modify:
             while (true)
             {
                 Console.Write("Enter new task: ");
                 string inputTask = Console.ReadLine()!;
                 if (inputTask != "")
                 {
-                    tasksList[taskIndex - 1] = inputTask;
-                    Console.ResetColor();
+                    tasksList.Add(new UserTask(inputTask));
                     break;
                 }
             }
             break;
     }
+    Console.ResetColor();
+    DisplayTasks();
 }
 
 void DisplayTasks()
 {
+    if (tasksList.Count == 0)
+    {
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("You don't have any tasks to display");
+        Console.ResetColor();
+        return;
+    }
+    
+    int biggestDescriptionLength = 0;
+    int additionalPads = 17;
+    
+    foreach (var task in tasksList)
+    {
+        if (task.Description.Length > biggestDescriptionLength)
+        {
+            biggestDescriptionLength = task.Description.Length;
+        }
+    }
+    
     for (int i = 0; i < tasksList.Count; i++)
     {
-        Console.WriteLine($"{i + 1} | {tasksList[i]}");
+        Console.Write($"{tasksList[i]} | ");
+        if (tasksList[i].Description.Length == biggestDescriptionLength)
+        {
+            Console.Write(tasksList[i].Description);
+        }
+        else
+        {
+            Console.Write(tasksList[i].Description.PadRight(biggestDescriptionLength));
+        }
+        
+        Console.WriteLine($" | {tasksList[i].Status}");
+        
+        
         if (i != tasksList.Count - 1)
         {
-            Console.WriteLine("------------------------");
+            Console.WriteLine("-".PadRight(additionalPads + biggestDescriptionLength, '-'));
         }
     }
 }
-
-//Add ability to mark ended tasks
