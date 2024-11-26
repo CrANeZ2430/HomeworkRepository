@@ -53,6 +53,7 @@ public static class StorageHandler
             statusesList.Add((TaskStatus)int.Parse(status));
         }
         
+        tasksList.Clear();
         for (int i = 0; i < taskDescriptions.Count; i++)
         {
             tasksList.Add(new UserTask(taskDescriptions[i], statusesList[i]));
