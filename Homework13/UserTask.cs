@@ -3,23 +3,24 @@
 public class UserTask
 {
     public string Description { get; }
-    public string Status { get; private set; }
+    public TaskStatus Status { get; private set; }
+    public bool CanModify { get; private set; }
 
-    private bool AbilityToModify { get; set; }
-
-    public UserTask(string description)
+    public UserTask(string description, TaskStatus status = TaskStatus.Unfinished)
     {
         Description = description;
-        Status = "Unfinished";
+        Status = status;
+        CanModify = status == TaskStatus.Unfinished;
     }
 
     public void SetTaskAsDone()
     {
-        if (AbilityToModify == false)
+        if (CanModify == false)
         {
             return;
         }
-        Status = "Finished";
-        AbilityToModify = false;
+        
+        Status = TaskStatus.Finished;
+        CanModify = false;
     }
 }
