@@ -29,7 +29,7 @@ public static class StorageHandler
         foreach (UserTask task in tasksList)
         {
             File.AppendAllText(rootPath + @"\TasksManager\Tasks.txt", task.Description + Environment.NewLine);
-            File.AppendAllText(rootPath + @"\TasksManager\Tasks.txt", task.Status + Environment.NewLine);
+            File.AppendAllText(rootPath + @"\TasksManager\Tasks.txt", (int)task.Status + Environment.NewLine);
         }
         Console.WriteLine("All tasks have been saved");
         Console.ResetColor();
@@ -45,12 +45,12 @@ public static class StorageHandler
             Console.ResetColor();
             return;
         }
-        var taskDescriptions = taskStorage.Where(s => s != "Finished" && s != "Unfinished").ToList();
-        var stringStatusList = taskStorage.Where(s => s == "Finished" || s == "Unfinished").ToList();
+        var taskDescriptions = taskStorage.Where(s => s != "0" && s != "1").ToList();
+        var stringStatusList = taskStorage.Where(s => s == "0" || s == "1").ToList();
         var statusesList = new List<TaskStatus>();
         foreach (var status in stringStatusList)
         {
-            statusesList.Add(status == "Finished" ? TaskStatus.Finished : TaskStatus.Unfinished);
+            statusesList.Add((TaskStatus)int.Parse(status));
         }
         
         for (int i = 0; i < taskDescriptions.Count; i++)
