@@ -18,7 +18,7 @@ void SelectBalanceChange(Account account)
 
         if (changeType == 0)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("You are exiting the program...");
             return;
         }
