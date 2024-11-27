@@ -7,22 +7,24 @@ public static class StorageHandler
     
     public static void SaveTasks(List<UserTask> tasksList)
     {
-        IsCreatedDirectory = !Directory.Exists(rootPath + @"\TasksManager\Tasks.txt");
-        if (TasksHandler.GetTasksList().Count == 0)
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            File.WriteAllText(rootPath + @"\TasksManager\Tasks.txt", "");
-            Console.WriteLine("You saved 0 tasks");
-            Console.ResetColor();
-            return;
-        }
+        IsCreatedDirectory = Directory.Exists(rootPath + @"\TasksManager\Tasks.txt");
         Console.ForegroundColor = ConsoleColor.Green;
+        
         if (!IsCreatedDirectory)
         {
             Directory.CreateDirectory(rootPath + @"\TasksManager");
             File.Create(rootPath + @"\TasksManager\Tasks.txt").Close();
             IsCreatedDirectory = true;
             Console.WriteLine("Created directory: " + rootPath + @"\TasksManager\Tasks.txt");
+            Console.ResetColor();
+        }
+        
+        if (TasksHandler.GetTasksList().Count == 0)
+        {
+            File.WriteAllText(rootPath + @"\TasksManager\Tasks.txt", "");
+            Console.WriteLine("You saved 0 tasks");
+            Console.ResetColor();
+            return;
         }
 
         File.WriteAllText(rootPath + @"\TasksManager\Tasks.txt", "");
