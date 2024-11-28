@@ -18,9 +18,7 @@ public class Account
             case ChangeType.Withdraw:
                 if (Balance < amount)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("You don't have enough money");
-                    Console.ResetColor();
+                    ErrorHandler.Error("You don't have enough money");
                     return;
                 }
                 Balance -= amount;
