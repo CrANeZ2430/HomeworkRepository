@@ -16,6 +16,13 @@ public class Account
         switch (changeType)
         {
             case ChangeType.Withdraw:
+                if (Balance < amount)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You don't have enough money");
+                    Console.ResetColor();
+                    return;
+                }
                 Balance -= amount;
                 break;
             case ChangeType.Deposit:

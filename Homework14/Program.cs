@@ -1,5 +1,6 @@
 ﻿using Homework14;
 
+Console.WriteLine("Your Bank");
 Account client = RegisterAccount();
 
 Console.WriteLine("\n\t1 - Withdraw money\n\t2 - Deposit money\n\t3 - Show money");
@@ -13,16 +14,13 @@ void SelectBalanceChange(Account account)
         string change = Console.ReadLine()!;
         if (!int.TryParse(change, out int changeType) && changeType < 0 || changeType > 4)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Enter a valid change type");
-            Console.ResetColor();
+            ErrorHandler.Error("Enter a valid change type");
             continue;
         }
 
         if (changeType == 0)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("You are exiting the program...");
+            ErrorHandler.Warning("You are exiting this program...");
             return;
         }
 
@@ -36,9 +34,7 @@ void SelectBalanceChange(Account account)
         string amount = Console.ReadLine()!;
         if (!decimal.TryParse(amount, out decimal changeAmount) || changeAmount <= 0)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Enter valid amount of money");
-            Console.ResetColor();
+            ErrorHandler.Error("Enter a valid amount of money");
             continue;
         }
         account.ChangeBalance(changeAmount, (ChangeType)changeType);
@@ -47,15 +43,16 @@ void SelectBalanceChange(Account account)
 
 Account RegisterAccount()
 {
-    string name = "";
+    string name;
     decimal starterBalance;
     
     while (true)
     {
-        Console.Write("Enter your account name: ");
+        Console.Write("\nEnter your account name: ");
         string nameInput = Console.ReadLine()!;
         if (nameInput == "")
         {
+            ErrorHandler.Error("Enter a valid account name");
             continue;
         }
         name = nameInput;
@@ -64,6 +61,7 @@ Account RegisterAccount()
         string amountInput = Console.ReadLine()!;
         if (!decimal.TryParse(amountInput, out decimal amount) || amount <= 0)
         {
+            ErrorHandler.Error("Enter a valid amount of money");
             continue;
         }
         
