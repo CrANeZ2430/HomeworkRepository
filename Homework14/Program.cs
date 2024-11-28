@@ -1,9 +1,9 @@
 ﻿using Homework14;
 
-Console.WriteLine("\t1 - Withdraw money\n\t2 - Deposit money\n\t3 - Show money\n\t4 - Register an account\n\t5 - Login");
-Account worker = new("Oleksiy", 2500);
+Account client = RegisterAccount();
 
-SelectBalanceChange(worker);
+Console.WriteLine("\n\t1 - Withdraw money\n\t2 - Deposit money\n\t3 - Show money");
+SelectBalanceChange(client);
 
 void SelectBalanceChange(Account account)
 {
@@ -11,7 +11,7 @@ void SelectBalanceChange(Account account)
     {
         Console.Write("\nEnter your balance manipulation type: ");
         string change = Console.ReadLine()!;
-        if (!int.TryParse(change, out int changeType) && changeType < 0 || changeType > 3)
+        if (!int.TryParse(change, out int changeType) && changeType < 0 || changeType > 4)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Enter a valid change type");
@@ -43,4 +43,34 @@ void SelectBalanceChange(Account account)
         }
         account.ChangeBalance(changeAmount, (ChangeType)changeType);
     }
+}
+
+Account RegisterAccount()
+{
+    string name = "";
+    decimal starterBalance;
+    
+    while (true)
+    {
+        Console.Write("Enter your account name: ");
+        string nameInput = Console.ReadLine()!;
+        if (nameInput == "")
+        {
+            continue;
+        }
+        name = nameInput;
+        
+        Console.Write("Enter your account start balance: ");
+        string amountInput = Console.ReadLine()!;
+        if (!decimal.TryParse(amountInput, out decimal amount) || amount <= 0)
+        {
+            continue;
+        }
+        
+        starterBalance = amount;
+        break;
+    }
+    
+    Account sample = new(name, starterBalance);
+    return sample;
 }
