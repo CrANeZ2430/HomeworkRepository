@@ -3,5 +3,5 @@
 public enum ChangeType
 {
     Withdraw = 1,
-    Deposit,
+    Deposit
 }
