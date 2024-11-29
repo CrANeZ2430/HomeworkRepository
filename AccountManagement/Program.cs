@@ -101,7 +101,7 @@ void RegisterAccount()
     }
     
     User sampleUser = new(userName);
-    MessageHandler.Message("\nAccount was successfully registered");
+    MessageHandler.Message("Account was successfully registered");
     Console.WriteLine($"\t{sampleUser.UserName} - {sampleUser.Id}");
     users.Add(sampleUser);
 }
