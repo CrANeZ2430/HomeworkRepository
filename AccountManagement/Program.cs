@@ -42,7 +42,7 @@ void SelectAction()
             RegisterAccount();
             break;
         case 6:
-            ShowMyAccounts();
+            ShowMyAccount();
             break;
     }
 }
@@ -120,7 +120,7 @@ void ShowAllAccounts()
     }
 }
 
-void ShowMyAccounts()
+void ShowMyAccount()
 {
     if (myAccount == null)
     {
