@@ -9,8 +9,14 @@ public class Account
     }
     
     private decimal _balance;
+    
+    public Account(string accountName, decimal balance)
+    {
+        AccountName = accountName;
+        Balance = balance;
+    }
+    
     public string AccountName { get; }
-
     public decimal Balance
     {
         get { return _balance; }
