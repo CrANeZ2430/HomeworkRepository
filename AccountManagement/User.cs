@@ -23,7 +23,7 @@ public class User
             return _username;
         }
 
-        set
+        private init
         {
             if (value == null && value.Any(char.IsDigit))
             {
