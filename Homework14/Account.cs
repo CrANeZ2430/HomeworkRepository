@@ -2,6 +2,12 @@
 
 public class Account
 {
+    public Account(string accountName, decimal balance)
+    {
+        AccountName = accountName;
+        Balance = balance;
+    }
+    
     private decimal _balance;
     public string AccountName { get; }
 
@@ -18,12 +24,6 @@ public class Account
 
             _balance = value;
         }
-    }
-
-    public Account(string accountName, decimal balance)
-    {
-        AccountName = accountName;
-        Balance = balance;
     }
 
     public void ChangeBalance(decimal amount, ChangeType changeType)

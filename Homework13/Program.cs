@@ -16,7 +16,7 @@ void SelectAction()
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("\nEnter action number: ");
         string input = Console.ReadLine()!;
-        if (int.TryParse(input, out int actionNumber) && actionNumber > 0 && actionNumber <= 7)
+        if (int.TryParse(input, out int actionNumber) && actionNumber > 0 && actionNumber < 8)
         {
             editTaskType = (EditTaskType)actionNumber;
             Console.ResetColor();
