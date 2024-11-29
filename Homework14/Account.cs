@@ -2,8 +2,23 @@
 
 public class Account
 {
-    private string AccountName { get; }
-    private decimal Balance {get; set;}
+    private decimal _balance;
+    public string AccountName { get; }
+
+    public decimal Balance
+    {
+        get { return _balance; }
+        private set
+        {
+            if (value < 0)
+            {
+                ErrorHandler.Error("You don't have enough money");
+                return;
+            }
+
+            _balance = value;
+        }
+    }
 
     public Account(string accountName, decimal balance)
     {
@@ -16,25 +31,11 @@ public class Account
         switch (changeType)
         {
             case ChangeType.Withdraw:
-                if (Balance < amount)
-                {
-                    ErrorHandler.Error("You don't have enough money");
-                    return;
-                }
                 Balance -= amount;
                 break;
             case ChangeType.Deposit:
                 Balance += amount;
                 break;
         }
-        
-        ShowBalance();
-    }
-
-    public void ShowBalance()
-    {
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine($"{AccountName} current balance: {Balance}");
-        Console.ResetColor();
     }
 }

@@ -26,7 +26,7 @@ void SelectBalanceChange(Account account)
 
         if (changeType == 3)
         {
-            account.ShowBalance();
+            ShowBalance(account);
             continue;
         }
     
@@ -38,7 +38,15 @@ void SelectBalanceChange(Account account)
             continue;
         }
         account.ChangeBalance(changeAmount, (ChangeType)changeType);
+        ShowBalance(account);
     }
+}
+
+void ShowBalance(Account account1)
+{
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"{account1.AccountName}'s balance is now {account1.Balance}");
+    Console.ResetColor();
 }
 
 Account RegisterAccount()
