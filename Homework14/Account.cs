@@ -2,12 +2,6 @@
 
 public class Account
 {
-    public Account(string accountName, decimal balance)
-    {
-        AccountName = accountName;
-        Balance = balance;
-    }
-    
     private decimal _balance;
     
     public Account(string accountName, decimal balance)
