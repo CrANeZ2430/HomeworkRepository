@@ -2,6 +2,8 @@
 
 public class User
 {
+    private string _username;
+    
     public User(string userName)
     {
         UserName = userName;
@@ -13,7 +15,24 @@ public class User
         UserName = userName;
         Id = id;
     }
-    
-    public string UserName { get; }
+
+    public string UserName
+    {
+        get
+        {
+            return _username;
+        }
+
+        set
+        {
+            if (value == null && value.Any(char.IsDigit))
+            {
+                MessageHandler.Error("User name cannot be null");
+                return;
+            }
+            
+            _username = value;
+        }
+    }
     public int Id { get; }
 }

@@ -1,16 +1,15 @@
 ﻿using AccountManagement;
 
-Console.WriteLine("\t1 - Upload accounts\n\t2 - Download accounts\n\t3 - Login\n\t4 - Register\n");
+Console.WriteLine("\t1 - Upload accounts\n\t2 - Download accounts\n\t3 - Show all accounts" +
+                  "\n\t4 - Login\n\t5 - Register\n\t6 - Show my account");
 
+User myAccount = null;
 List<User> users = new List<User>();
-users.Add(new User("Micheal"));
-users.Add(new User("Eduardo"));
-users.Add(new User("Walter"));
 
-User account = RegisterAccount();
-users.Add(account);
-
-SelectAction();
+while (true)
+{
+    SelectAction();
+}
 void SelectAction()
 {
     int actionNumber;
@@ -19,7 +18,7 @@ void SelectAction()
     {
         Console.Write("\nEnter action number: ");
         string input = Console.ReadLine()!;
-        if (int.TryParse(input, out actionNumber) && actionNumber > 0 && actionNumber < 5)
+        if (int.TryParse(input, out actionNumber) && actionNumber > 0 && actionNumber < 7)
         {
             break;
         }
@@ -28,20 +27,66 @@ void SelectAction()
     switch (actionNumber)
     {
         case 1:
-            StorageManagement.CreateDirectory(users);
+            StorageManagement.SaveUserAccounts(users);
             break;
         case 2:
+            StorageManagement.GetUserAccounts(users);
             break;
         case 3:
+            ShowAllAccounts();
             break;
         case 4:
+            LoginAccount();
+            break;
+        case 5:
+            RegisterAccount();
+            break;
+        case 6:
+            ShowMyAccounts();
             break;
     }
 }
 
-User RegisterAccount()
+void LoginAccount()
 {
-    string name;
+    string userName;
+    int userId;
+
+    while (true)
+    {
+        Console.Write("Enter user name: ");
+        string input = Console.ReadLine()!;
+        if (input != "" && !input.Any(char.IsDigit))
+        {
+            userName = input;
+            break;
+        }
+        MessageHandler.Error("Please enter a valid username");
+    }
+    
+    while (true)
+    {
+        Console.Write("Enter user Id: ");
+        string input = Console.ReadLine()!;
+        if (int.TryParse(input, out userId) && input.Length > 0 && input.Length < 5)
+        {
+            break;
+        }
+        MessageHandler.Error("Please enter a valid Id");
+    }
+
+    if (users.Any(u => u.UserName == userName && u.Id == userId))
+    {
+        myAccount = users.First(u => u.UserName == userName && u.Id == userId);
+    }
+    
+    myAccount = new User(userName, userId);
+    MessageHandler.Message("You are logged in!");
+}
+
+void RegisterAccount()
+{
+    string userName;
     
     while (true)
     {
@@ -49,15 +94,38 @@ User RegisterAccount()
         string nameInput = Console.ReadLine()!;
         if (nameInput != "" && !nameInput.Any(char.IsDigit))
         {
-            name = nameInput;
+            userName = nameInput;
             break;
         }
         MessageHandler.Error("Enter a valid account name\n");
     }
     
-    User sample = new(name);
+    User sampleUser = new(userName);
     MessageHandler.Message("\nAccount was successfully registered");
-    Console.WriteLine(sample.UserName);
-    Console.WriteLine(sample.Id);
-    return sample;
+    Console.WriteLine($"\t{sampleUser.UserName} - {sampleUser.Id}");
+    users.Add(sampleUser);
+}
+
+void ShowAllAccounts()
+{
+    if (users.Count == 0)
+    {
+        MessageHandler.Error("You don't have any accounts");
+        return;
+    }
+
+    foreach (var user in users)
+    {
+        Console.WriteLine($"\n\t{user.UserName} - {user.Id}");
+    }
+}
+
+void ShowMyAccounts()
+{
+    if (myAccount == null)
+    {
+        MessageHandler.Error("You are not logged in");
+        return;
+    }
+    Console.WriteLine($"\t{myAccount.UserName} - {myAccount.Id}");
 }
