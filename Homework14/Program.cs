@@ -37,15 +37,16 @@ void SelectBalanceChange(Account account)
             ErrorHandler.Error("Enter a valid amount of money");
             continue;
         }
+        
         account.ChangeBalance(changeAmount, (ChangeType)changeType);
         ShowBalance(account);
     }
 }
 
-void ShowBalance(Account account1)
+void ShowBalance(Account accountToShow)
 {
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine($"{account1.AccountName}'s balance is now {account1.Balance}");
+    Console.WriteLine($"{accountToShow.AccountName}'s balance: {accountToShow.Balance}");
     Console.ResetColor();
 }
 
