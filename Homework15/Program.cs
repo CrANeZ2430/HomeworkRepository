@@ -8,6 +8,6 @@ List<Product> products = new()
     new Tomato(10.5m)
 };
 
-VegetableShop vegetableShop = new VegetableShop();
-vegetableShop.AddProducts(products);
-vegetableShop.PrintProductsInfo();
+VegetableShop shop = new VegetableShop();
+shop.AddProducts(products);
+shop.PrintProductsInfo();
